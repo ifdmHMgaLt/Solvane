@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solvane</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1b1d1f;
+    --ink-soft: #565c61;
+    --line: #d3d6d8;
+    --bg: #f2f1ee;
+    --surface: #fbfaf8;
+    --accent: #2b3338;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body { margin: 0; padding: 0; }
+
+  body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: -0.01em;
+  }
+
+  /* ---------- Шапка ---------- */
+  header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .header-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 34px 36px 26px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .brand {
+    font-family: "Bad Script", cursive;
+    font-size: 40px;
+    line-height: 1;
+    letter-spacing: 0;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .tagline {
+    font-size: 12px;
+    color: var(--ink-soft);
+    letter-spacing: 0.04em;
+    max-width: 360px;
+    line-height: 1.6;
+  }
+
+  /* ---------- Навигация ---------- */
+  nav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 36px;
+    display: flex;
+    gap: 34px;
+    overflow-x: auto;
+  }
+
+  nav a {
+    display: inline-block;
+    padding: 15px 0;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--ink-soft);
+    border-bottom: 1px solid transparent;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  nav a:hover,
+  nav a.active {
+    color: var(--ink);
+    border-bottom-color: var(--accent);
+  }
+
+  /* ---------- Контент ---------- */
+  main {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 60px 36px 90px;
+  }
+
+  .lead {
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 48px;
+    margin-bottom: 0;
+    max-width: 720px;
+  }
+
+  .lead .kicker {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+  }
+
+  .lead h1 {
+    font-family: "Bad Script", cursive;
+    font-size: 56px;
+    line-height: 1.1;
+    font-weight: 400;
+    letter-spacing: 0;
+    margin: 0 0 20px;
+  }
+
+  .lead p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin: 0;
+    max-width: 600px;
+  }
+
+  /* Редакционный поток */
+  .stream { display: block; }
+
+  .stream-item {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    gap: 28px;
+    padding: 34px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: start;
+  }
+
+  .stream-item .num {
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    color: #9aa1a7;
+    padding-top: 6px;
+  }
+
+  .stream-item .body h2 {
+    font-family: "Bad Script", cursive;
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: 0;
+    margin: 0 0 8px;
+    line-height: 1.15;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .stream-item .body h2:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 6px;
+  }
+
+  .stream-item .body p {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin: 0 0 10px;
+    max-width: 620px;
+  }
+
+  .stream-item .meta {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #9aa1a7;
+  }
+
+  /* ---------- Футер ---------- */
+  footer {
+    border-top: 1px solid var(--line);
+    background: var(--surface);
+  }
+
+  .footer-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 30px 36px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    letter-spacing: 0.02em;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 22px;
+  }
+
+  .footer-links a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    cursor: pointer;
+    border-bottom: 1px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .footer-links a:hover {
+    color: var(--ink);
+    border-bottom-color: var(--accent);
+  }
+
+  /* ---------- Баннер куки ---------- */
+  .cookie-box {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    background: var(--surface);
+    border-top: 1px solid var(--line);
+    padding: 20px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    z-index: 10;
+  }
+
+  .cookie-box p {
+    margin: 0;
+    flex: 1 1 360px;
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 640px;
+  }
+
+  .cookie-buttons {
+    display: flex;
+    gap: 12px;
+  }
+
+  .cookie-buttons button {
+    font-family: inherit;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 11px 26px;
+    border: 1px solid var(--accent);
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .cookie-buttons button:hover { background: #ebe9e4; }
+
+  #accept {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+
+  #accept:hover { background: #1c2226; }
+
+  /* ---------- Скример ---------- */
+  #screamer {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: #000;
+    z-index: 9999;
+    cursor: none;
+  }
+
+  #screamer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  body.scare { overflow: hidden; }
+
+  @media (max-width: 600px) {
+    .header-inner { padding: 26px 22px 20px; }
+    .brand { font-size: 34px; }
+    .nav-inner { padding: 0 22px; gap: 24px; }
+    main { padding: 44px 22px 70px; }
+    .lead h1 { font-size: 40px; }
+    .stream-item { grid-template-columns: 1fr; gap: 8px; padding: 26px 0; }
+    .stream-item .num { padding-top: 0; }
+    .stream-item .body h2 { font-size: 27px; }
+    .cookie-box { padding: 18px 22px; }
+    .cookie-buttons { width: 100%; }
+    .cookie-buttons button { flex: 1; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand" data-trigger>Solvane</div>
+    <div class="tagline">The most current news on politics, sports and the arts — delivered fast.</div>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="active" data-trigger>Home</a>
+    <a href="#" data-trigger>Politics</a>
+    <a href="#" data-trigger>Sports</a>
+    <a href="#" data-trigger>Arts</a>
+    <a href="#" data-trigger>World</a>
+    <a href="#" data-trigger>Business</a>
+    <a href="#" data-trigger>Contact</a>
+  </div>
+</nav>
+
+<main>
+  <section class="lead">
+    <div class="kicker">Editorial</div>
+    <h1>Stay informed, every day</h1>
+    <p>Our editorial team brings you the most relevant stories from politics, sports and the
+       arts as they happen. Coverage is updated continuously throughout the day, so you can
+       always rely on a clear and timely overview of what matters.</p>
+  </section>
+
+  <section class="stream">
+    <article class="stream-item">
+      <div class="num">01</div>
+      <div class="body">
+        <h2 data-trigger>Politics</h2>
+        <p>Key developments and official statements from around the world, summarised for a
+           quick and accurate read.</p>
+        <div class="meta">Updated today</div>
+      </div>
+    </article>
+    <article class="stream-item">
+      <div class="num">02</div>
+      <div class="body">
+        <h2 data-trigger>Sports</h2>
+        <p>Results, standings and highlights from major competitions, with concise analysis
+           from our correspondents.</p>
+        <div class="meta">Updated today</div>
+      </div>
+    </article>
+    <article class="stream-item">
+      <div class="num">03</div>
+      <div class="body">
+        <h2 data-trigger>Arts</h2>
+        <p>Exhibitions, releases and cultural events worth your attention, selected by our
+           editorial desk.</p>
+        <div class="meta">Updated today</div>
+      </div>
+    </article>
+    <article class="stream-item">
+      <div class="num">04</div>
+      <div class="body">
+        <h2 data-trigger>World</h2>
+        <p>International headlines and background context, presented without unnecessary
+           noise.</p>
+        <div class="meta">Updated today</div>
+      </div>
+    </article>
+    <article class="stream-item">
+      <div class="num">05</div>
+      <div class="body">
+        <h2 data-trigger>Business</h2>
+        <p>Market movements and corporate updates, explained in plain language for a general
+           audience.</p>
+        <div class="meta">Updated today</div>
+      </div>
+    </article>
+    <article class="stream-item">
+      <div class="num">06</div>
+      <div class="body">
+        <h2 data-trigger>Opinion</h2>
+        <p>Columns and perspectives on the issues of the day, clearly marked as opinion.</p>
+        <div class="meta">Updated today</div>
+      </div>
+    </article>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>&copy; Solvane. All rights reserved. This site uses cookies to improve your experience.</div>
+    <div class="footer-links">
+      <a href="#" data-trigger>Privacy Policy</a>
+      <a href="#" data-trigger>Terms of Use</a>
+    </div>
+  </div>
+</footer>
+
+<div class="cookie-box" id="cookieBox">
+  <p>For the operation of this website, the use of cookies is (preferably) required. Do you consent to their use?</p>
+  <div class="cookie-buttons">
+    <button id="decline" data-trigger>Decline</button>
+    <button id="accept" data-trigger>Accept</button>
+  </div>
+</div>
+
+<div id="screamer">
+  <img id="scareImg" alt="">
+</div>
+
+<audio id="screamSound" preload="auto"
+       src="https://www.myinstants.com/media/sounds/aaaaaaaa-bird.mp3"></audio>
+
+<script>
+  const screamer = document.getElementById('screamer');
+  const scareImg = document.getElementById('scareImg');
+  const cookieBox = document.getElementById('cookieBox');
+  const screamSound = document.getElementById('screamSound');
+
+  const JEFF_URL = "https://upload.wikimedia.org/wikipedia/en/3/3b/Jeff_the_Killer_Original_edited_image.png";
+
+  let scareStarted = false;
+
+  function triggerScare() {
+    if (scareStarted) return;
+    scareStarted = true;
+
+    // 0,3 секунды страница как будто "зависла" — ничего не меняется
+    setTimeout(() => {
+      cookieBox.style.display = 'none';
+
+      scareImg.src = JEFF_URL;
+      screamer.style.display = 'block';
+      document.body.classList.add('scare');
+
+      screamSound.volume = 1.0;
+      screamSound.currentTime = 0;
+      screamSound.play().catch(e => console.warn('Audio play error:', e));
+    }, 300);
+  }
+
+  // Все элементы с data-trigger запускают скример
+  document.querySelectorAll('[data-trigger]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      triggerScare();
+    });
+  });
+</script>
+
+</body>
+</html>
